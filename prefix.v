@@ -2,9 +2,11 @@ module main
 
 import net.http
 import walkingdevel.vxml { parse }
+import os
 
 fn main() {
-  resp := http.get("https://doi.crossref.org/getPrefixPublisher/?prefix=10.1215") or {
+  prefix := os.input("Enter a prefix: ")
+  resp := http.get("https://doi.crossref.org/getPrefixPublisher/?prefix=${prefix}") or {
       eprintln('Failed to fetch data from the server, Error: ${err}')
       return
     }
