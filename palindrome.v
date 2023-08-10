@@ -5,6 +5,7 @@ fn palindrome(word string) bool {
 }
 
 fn main() {
-	println(palindrome(os.args[1]))
+	word := os.input("Enter a some text: ")
+	println(palindrome(word)
 }
 
