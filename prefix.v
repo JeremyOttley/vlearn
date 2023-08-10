@@ -11,6 +11,9 @@ fn main() {
       return
     }
     doc := parse(resp.body)
-    upress := doc.get_element_by_tag_name("publisher_name")!
+    upress := doc.get_element_by_tag_name("publisher_name") or {
+      eprintln('Failed to fetch tag from XML, Error: ${err}')
+      return
+      }
     println(upress.text)
 }
