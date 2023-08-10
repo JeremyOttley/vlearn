@@ -6,6 +6,6 @@ fn palindrome(word string) bool {
 
 fn main() {
 	word := os.input("Enter a some text: ")
-	println(palindrome(word)
+	println(palindrome(word))
 }
 
