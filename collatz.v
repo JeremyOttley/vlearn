@@ -1,7 +1,7 @@
 import os
 
 fn greater_than_zero(n int) bool {
-  return n >= 0
+  return n > 0
 }
 
 fn is_even(n int) bool {
@@ -13,9 +13,9 @@ fn is_odd(n int) bool {
 }
                                           
 fn collatz(n int) int {
-  if is_even(n) {
+  if greater_than_zero(n) && is_even(n) {
     return n / 2
-  } else if is_odd(n) {
+  } else if greater_than_zero(n) && is_odd(n) {
     return (n * 3) + 1
   } else { return n }
 }
