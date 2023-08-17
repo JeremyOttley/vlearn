@@ -3,7 +3,7 @@ import rand
 import arrays
 
 fn is_img(f string) bool {
-	return match false {
+	return match true {
 			os.file_ext(f) == ".jpg" { true }
 			os.file_ext(f) == ".bmp" { true }
 			os.file_ext(f) == ".jpeg" { true }
