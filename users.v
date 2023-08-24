@@ -1,18 +1,26 @@
-import json
+module main
 
+//import net.http
+import json
+//import mewzax.chalk
+
+//const user_api = 'https://jsonplaceholder.typicode.com/users'
 
 struct Geo {
+pub:
   lat string
   lng string
 }
 
 struct Company {
+pub:
   name string
-  catchphase string
+  catchphrase string [json:'catchPhrase']
   bs string
 }
 
 struct Address {
+pub:
   street string
   suite string
   city string
@@ -21,16 +29,20 @@ struct Address {
 }
 
 struct User {
-  id string
+pub:
+  id int
   name string
   username string
   email string
   address Address
-
+  phone string
+  website string
+  company Company
 }
 
 fn main() {
-json_data := '[{
+  
+json_data := '{
     "id": 1,
     "name": "Leanne Graham",
     "username": "Bret",
@@ -52,15 +64,13 @@ json_data := '[{
       "catchPhrase": "Multi-layered client-server neural-net",
       "bs": "harness real-time e-markets"
     }
-  }]'
+  }'
 
-
-  mut users := json.decode([]User, json_data) or {
+  mut zipcodes := json.decode(User, json_data) or {
      eprintln('Failed to parse json, error: ${err}')
      return
   }
+  
+  println(zipcodes)
 
-  for user in users {
-     println('${user.name}: ${user.email}')
-  }
 }
