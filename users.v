@@ -2,7 +2,7 @@ module main
 
 import net.http
 import json
-//import mewzax.chalk
+import mewzax.chalk
 
 const user_api = 'https://jsonplaceholder.typicode.com/users'
 
@@ -50,7 +50,8 @@ json_data := http.get_text(user_api)
   }
 
 for user in zipcodes {
-  println("Your zipcode is: ${user.address.zipcode}")
+  zip_report := chalk.fg("Your zipcode is: ${user.address.zipcode}", 'green')
+  println(zip_report)
 }
 
 }
