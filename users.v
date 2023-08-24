@@ -71,6 +71,6 @@ json_data := '{
      return
   }
   
-  println(zipcodes)
+  println(zipcodes.address.zipcode)
 
 }
