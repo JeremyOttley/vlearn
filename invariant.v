@@ -1,7 +1,8 @@
 fn insertion_point(xs []i32, x i32) i32 {
+
   mut lo := 0
   mut hi := xs.len
-  //while loop
+
   for hi > lo {
     mid := lo + (hi - lo) / 2
     if x < xs[mid] {
@@ -10,6 +11,7 @@ fn insertion_point(xs []i32, x i32) i32 {
       hi = mid
     }
   }
+      
 return lo
 }
 
