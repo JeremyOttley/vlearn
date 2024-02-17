@@ -25,6 +25,16 @@ fn is_image(f string) bool {
   }
 }
 
+// fn is_image(f string) ?string {
+//   if os.file_ext(f) in image_extensions {
+//     return f
+//   } else { 
+//     return none
+//   }
+// }
+      // use ? to unwrap: x := is_image("file.png")
+      // x?
+
 
 fn main() {
 
