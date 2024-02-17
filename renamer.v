@@ -2,56 +2,35 @@ import os
 import rand
 import arrays
 
-fn is_img(f string) bool {
-	return match true {
-			os.file_ext(f) == ".jpg" { true }
-			os.file_ext(f) == ".bmp" { true }
-			os.file_ext(f) == ".jpeg" { true }
-			os.file_ext(f) == ".png" { true }
-			else { false }
-		}
-}
+const image_extensions = [".jpg", ".jpeg", ".png", ".bmp"]
 
-fn renamer(f string)! {
-	os.mv(f, rand.string(16) + os.file_ext(f)) or {
-      eprintln('Failed to rename file, Error: ${err}')
-      return
+fn get_images() ![]string {
+    mut images := []string{}
+    jpgs := os.glob("*.jpg") or { [] }
+    bmps := os.glob("*.bmp") or { [] }
+    jpegs := os.glob("*.jpeg") or { [] }
+    pngs := os.glob("*.png") or { [] }
+    dir := arrays.flatten([jpgs, bmps, jpegs, pngs])
+    for file in dir {
+        images << file
     }
+    return images
+  }
+
+fn is_image(f string) bool {
+  if os.file_ext(f) in image_extensions {
+    return true
+  } else { 
+    return false 
+  }
 }
-
-
-
 
 
 fn main() {
 
-	mut images := []string{}
-
-	jpgs := os.glob("*.jpg") or {
-	[]
-    }
-	bmps := os.glob("*.bmp") or {
-	[]	
-    }
-	jpegs := os.glob("*.jpeg") or {
-	[]
-    }
-	pngs := os.glob("*.png") or {
-	[]
-    }
-
-	formats := arrays.flatten([jpgs, bmps, jpegs, pngs])
-
-	for extension in formats {
-		images << extension
-	}
-
-	for image in images {
-		renamer(image) or {
-      eprintln('Failed to fetch image file from directory, Error: ${err}')
-      return
-    }
-	}	
+  for image in get_images()! {
+    os.mv(image, rand.string(16) + os.file_ext(image))!
+  }
 
 }
 
