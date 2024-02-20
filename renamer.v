@@ -18,10 +18,9 @@ fn get_images() ![]string {
   }
 
 fn is_image(f string) bool {
-  if os.file_ext(f) in image_extensions {
-    return true
-  } else { 
-    return false 
+  return match true {
+    os.file_ext(f) in image_extensions { true }
+    else { false }
   }
 }
 
