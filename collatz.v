@@ -13,11 +13,11 @@ fn is_odd(n int) bool {
 }
                                           
 fn collatz(n int) int {
-  if greater_than_zero(n) && is_even(n) {
-    return n / 2
-  } else if greater_than_zero(n) && is_odd(n) {
-    return (n * 3) + 1
-  } else { return n }
+	match true {
+		greater_than_zero(n) && is_even(n) { return n / 2 }
+		greater_than_zero(n) && is_odd(n) { return (n * 3) + 1 }
+		else { return n }
+	}
 }
  
 fn main() {
