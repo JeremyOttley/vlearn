@@ -9,6 +9,6 @@ fn reverse_string(s string) ?string {
 
 
 fn main() {
-  s := "Jeremy"
+  s := os.input("Enter a string: ")
   println(reverse_string(s)?)
 }
